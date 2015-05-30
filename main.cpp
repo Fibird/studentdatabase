@@ -100,8 +100,8 @@ int Find(int num)
     {
         pre->next = cur->next;
     }
-  //  delete [] cur;
- //   delete [] newStudent;
+    delete cur;
+ //   delete newStudent;
     return 0;
 }
 void Print()
