@@ -1,4 +1,5 @@
 # depslib dependency file v1.0
-1432912008 source:f:\codeblocks\studentdatabase\main.cpp
+1432956698 source:f:\codeblocks\studentdatabase\main.cpp
 	<iostream>
+	<string>
 

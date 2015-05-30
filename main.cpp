@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 
 using namespace std;
 #define N 5
@@ -6,12 +7,12 @@ using namespace std;
 struct stuNode
 {
    int stuID;
-   char name[20];
-   char gender[10];
+   string name;
+   string gender;
    int age;
    struct stuNode *next;
 };
-stuNode *student=NULL;     /* points to the first part */
+stuNode *first=NULL, *track = NULL;    /* points to the first part */
 /**************************************************************
  * Create: Creates a new base and save the information in it. *
  **************************************************************/
@@ -20,7 +21,7 @@ void Create(void);
  * Find: Finds the base that has the same age with the enter- *
  *       ed age and delete it.                                *
  **************************************************************/
-void Find(int num);
+int Find(int num);
 /**************************************************************
  * Print: Prints the database.                                *
  **************************************************************/
@@ -42,40 +43,71 @@ int main()
 
     return 0;
 }
+
 void Create()
 {
     stuNode *newStudent;
+    /*mark ������ǡ�����һ���ڵ����ʱmark��Ϊ1*/
+    static int mark = -1;
 
     newStudent = new struct stuNode;
-
     cin >> newStudent->stuID
         >> newStudent->name
         >> newStudent->gender
         >> newStudent->age;
-    newStudent->next = student;
-    student = newStudent;
+
+    if (-1 == mark)                     //������һ���ڵ�
+    {
+    newStudent->next = first;
+    first = newStudent;
+    track = newStudent;
+    mark = 1;
+    }
+    else
+    {
+        track->next = newStudent;         //��������һ���ڵ�֮��Ľڵ�
+        track = newStudent;
+        newStudent->next = NULL;
+    }
 }
-void Find(int num)
+int Find(int num)
 {
-    stuNode *pre, *cur;
-    for (cur = student, pre = NULL;
+    stuNode *pre, *cur, *newStudent;
+
+    for (cur = first, pre = NULL;
          cur != NULL && num != cur->age;
          pre = cur, cur = pre->next)
           ;
-    if (cur == NULL)
-        ;
-    if (pre == NULL)
-        student = student->next;
-    else
-        pre->next = cur->next;
+    if (cur == NULL)                    //δ�ҵ���������ͬ�����䣬��������
+    {
+        newStudent = new struct stuNode;
 
-    delete [] cur;
+         newStudent->stuID = 180;
+         newStudent->name = "aaa";
+         newStudent->gender = "male";
+         newStudent->age = num;
+
+        track->next = newStudent;
+        track = newStudent;
+        newStudent->next = NULL;
+        return 0;
+    }
+    if (pre == NULL)                 //��������ͬ�������ڵ�һ���ڵ�
+    {
+        first = first->next;
+    }
+    else                             //��������ͬ�������������ڵ�
+    {
+        pre->next = cur->next;
+    }
+ //   delete [] newStudent;
+    return 0;
 }
 void Print()
 {
     stuNode *p;
 
-    for (p = student; p !=NULL; p = p->next)
+    for (p = first; p !=NULL; p = p->next)
     {
         cout << p->stuID << endl;
         cout << p->name << endl;
@@ -83,3 +115,4 @@ void Print()
         cout << p->age << endl;
     }
 }
+
