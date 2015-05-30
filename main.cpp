@@ -47,7 +47,7 @@ int main()
 void Create()
 {
     stuNode *newStudent;
-    /*mark ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç¡ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½ï¿½Ê±markï¿½ï¿½Îª1*/
+    /*mark ÓÃÀ´±ê¼Ç¡£µ±µÚÒ»¸ö½Úµã´æÔÚÊ±mark±äÎª1*/
     static int mark = -1;
 
     newStudent = new struct stuNode;
@@ -56,7 +56,7 @@ void Create()
         >> newStudent->gender
         >> newStudent->age;
 
-    if (-1 == mark)                     //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Úµï¿½
+    if (-1 == mark)                     //´´½¨µÚÒ»¸ö½Úµã
     {
     newStudent->next = first;
     first = newStudent;
@@ -65,7 +65,7 @@ void Create()
     }
     else
     {
-        track->next = newStudent;         //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Úµï¿½Ö®ï¿½ï¿½Ä½Úµï¿½
+        track->next = newStudent;         //´´½¨³ýµÚÒ»¸ö½ÚµãÖ®ÍâµÄ½Úµã
         track = newStudent;
         newStudent->next = NULL;
     }
@@ -78,7 +78,7 @@ int Find(int num)
          cur != NULL && num != cur->age;
          pre = cur, cur = pre->next)
           ;
-    if (cur == NULL)                    //Î´ï¿½Òµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¬ï¿½ï¿½ï¿½ï¿½ï¿½ä£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    if (cur == NULL)                    //Î´ÕÒµ½ÓëÊäÈëÏàÍ¬µÄÄêÁä£¬ÐÂÔöÊý¾Ý
     {
         newStudent = new struct stuNode;
 
@@ -92,14 +92,15 @@ int Find(int num)
         newStudent->next = NULL;
         return 0;
     }
-    if (pre == NULL)                 //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½Ò»ï¿½ï¿½ï¿½Úµï¿½
+    if (pre == NULL)                 //ÓëÊäÈëÏàÍ¬µÄÄêÁäÔÚµÚÒ»¸ö½Úµã
     {
         first = first->next;
     }
-    else                             //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½
+    else                             //ÓëÊäÈëÏàÍ¬µÄÄêÁäÔÚÆäËû½Úµã
     {
         pre->next = cur->next;
     }
+  //  delete [] cur;
  //   delete [] newStudent;
     return 0;
 }
