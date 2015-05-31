@@ -58,9 +58,8 @@ void Create()
 
     if (-1 == mark)                     //创建第一个节点
     {
-    newStudent->next = first;
-    first = newStudent;
-    track = newStudent;
+    newStudent->next = NULL;
+    first = track = newStudent;
     mark = 1;
     }
     else
