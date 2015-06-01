@@ -15,7 +15,6 @@ struct stuNode
 stuNode *first=NULL, *track = NULL;    /* points to the first part */
  // Create: Creates a new base and save the information in it.
 void Create(void);
-
 //Delete: Deletes the base that has the same age with the entered age and delete it.
 int Delete(int num);
  //Print: Prints the database.
@@ -48,14 +47,14 @@ void Create()
         >> newStudent->gender
         >> newStudent->age;
 
-    if (first == NULL)                     //´´½¨µÚÒ»¸ö½Úµã
+    if (first == NULL)                     //åˆ›å»ºç¬¬ä¸€ä¸ªèŠ‚ç‚¹
     {
     newStudent->next = NULL;
     first = track = newStudent;
     }
     else
     {
-        track->next = newStudent;         //´´½¨³ýµÚÒ»¸ö½ÚµãÖ®ÍâµÄ½Úµã
+        track->next = newStudent;         //åˆ›å»ºé™¤ç¬¬ä¸€ä¸ªèŠ‚ç‚¹ä¹‹å¤–çš„èŠ‚ç‚¹
         track = newStudent;
         newStudent->next = NULL;
     }
@@ -68,7 +67,7 @@ int Delete(int num)
          cur != NULL && num != cur->age;
          pre = cur, cur = pre->next)
           ;
-    if (cur == NULL)                    //Î´ÕÒµ½ÓëÊäÈëÏàÍ¬µÄÄêÁä£¬ÐÂÔöÊý¾Ý
+    if (cur == NULL)                    //æœªæ‰¾åˆ°ä¸Žè¾“å…¥ç›¸åŒçš„å¹´é¾„ï¼Œæ–°å¢žæ•°æ®
     {
         newStudent = new struct stuNode;
 
@@ -82,11 +81,11 @@ int Delete(int num)
         newStudent->next = NULL;
         return 0;
     }
-    if (pre == NULL)                 //ÓëÊäÈëÏàÍ¬µÄÄêÁäÔÚµÚÒ»¸ö½Úµã
+    if (pre == NULL)                 //ä¸Žè¾“å…¥ç›¸åŒçš„å¹´é¾„åœ¨ç¬¬ä¸€ä¸ªèŠ‚ç‚¹
     {
         first = first->next;
     }
-    else                             //ÓëÊäÈëÏàÍ¬µÄÄêÁäÔÚÆäËû½Úµã
+    else                             //ä¸Žè¾“å…¥ç›¸åŒçš„å¹´é¾„åœ¨å…¶ä»–èŠ‚ç‚¹
     {
         pre->next = cur->next;
     }
