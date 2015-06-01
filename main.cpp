@@ -13,18 +13,12 @@ struct stuNode
    struct stuNode *next;
 };
 stuNode *first=NULL, *track = NULL;    /* points to the first part */
-/**************************************************************
- * Create: Creates a new base and save the information in it. *
- **************************************************************/
+ // Create: Creates a new base and save the information in it.
 void Create(void);
-/**************************************************************
- * Find: Finds the base that has the same age with the enter- *
- *       ed age and delete it.                                *
- **************************************************************/
-int Find(int num);
-/**************************************************************
- * Print: Prints the database.                                *
- **************************************************************/
+
+//Delete: Deletes the base that has the same age with the entered age and delete it.
+int Delete(int num);
+ //Print: Prints the database.
 void Print(void);
 
 int main()
@@ -37,7 +31,7 @@ int main()
     }
 
     cin >> sameAge;
-    Find(sameAge);
+    Delete(sameAge);
 
     Print();
 
@@ -47,8 +41,6 @@ int main()
 void Create()
 {
     stuNode *newStudent;
-    /*mark 用来标记。当第一个节点存在时mark变为1*/
-    static int mark = -1;
 
     newStudent = new struct stuNode;
     cin >> newStudent->stuID
@@ -56,11 +48,10 @@ void Create()
         >> newStudent->gender
         >> newStudent->age;
 
-    if (-1 == mark)                     //创建第一个节点
+    if (first == NULL)                     //创建第一个节点
     {
     newStudent->next = NULL;
     first = track = newStudent;
-    mark = 1;
     }
     else
     {
@@ -69,7 +60,7 @@ void Create()
         newStudent->next = NULL;
     }
 }
-int Find(int num)
+int Delete(int num)
 {
     stuNode *pre, *cur, *newStudent;
 
